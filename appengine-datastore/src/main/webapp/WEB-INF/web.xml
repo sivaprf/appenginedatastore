@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5">
+  <servlet>
+    <servlet-name>EcomCatalogServlet</servlet-name>
+    <servlet-class>com.gclouddemo.ecommerce.catalog.EcomCatalogServlet</servlet-class>
+  </servlet>
+<servlet-mapping>
+    <servlet-name>EcomCatalogServlet</servlet-name>
+    <url-pattern>/catalog</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ProductDatastoreServlet</servlet-name>
+    <servlet-class>com.gclouddemo.ecommerce.catalog.ProductDatastoreServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProductDatastoreServlet</servlet-name>
+    <url-pattern>/product</url-pattern>
+  </servlet-mapping>
+<!-- [START Objectify] -->
+    <filter>
+      <filter-name>ObjectifyFilter</filter-name>
+      <filter-class>com.googlecode.objectify.ObjectifyFilter</filter-class>
+    </filter>
+    <filter-mapping>
+      <filter-name>ObjectifyFilter</filter-name>
+      <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <listener>
+      <listener-class>com.gclouddemo.ecommerce.catalog.datastore.OfyHelper</listener-class>
+    </listener>
+<!-- [END Objectify] -->
+  
+</web-app>
